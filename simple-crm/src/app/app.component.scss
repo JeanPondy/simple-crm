@@ -1,5 +1,9 @@
 
 /* In der entsprechenden CSS-Datei */
+mat-toolbar, mat-toolbar-row{
+min-height: 56px;
+height: 56px;
+}
 .mat-toolbar {
     background-color: rgb(91, 186, 238); /* oder #FFFF00 */
     span{
@@ -9,6 +13,19 @@
 
   .mat-drawer-container {
     height: 100vh;
+
+    .sidenav{
+        width: 300px;
+     
+        .logo-container{
+            border-bottom: 1px solid rgba(0,0,0,0.25);
+            padding-left: 16px;
+            padding-right: 16px;
+            min-height: 55px;
+            display: flex;
+            align-items: center;
+        }
+    }
 
     .menu-icon{
         color: white;
