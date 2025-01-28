@@ -6,9 +6,14 @@
   <div class="example-sidenav-content">
     <mat-toolbar>
       <mat-toolbar-row>
-        <button type="button" mat-button (click)="drawer.toggle()">
-          Toggle sidenav
-        </button>
+        <mat-icon
+          (click)="drawer.toggle()"
+          class="menu-icon"
+          aria-hidden="false"
+          aria-label="Example delete icon"
+          >menu</mat-icon
+        >
+
         <span>Simple CRM</span>
       </mat-toolbar-row>
     </mat-toolbar>
