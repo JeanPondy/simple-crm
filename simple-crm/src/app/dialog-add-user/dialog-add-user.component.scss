@@ -1,7 +1,11 @@
 .action-btn {
     display: flex;
-    justify-content:space-around;
+    justify-content:flex-start;
    button{
     cursor: pointer;
    }
+}
+
+.first-last{
+    padding-top: 4px;
 }

@@ -19,7 +19,7 @@ export class UserComponent {
   ngOnInit(): void {}
 
   openDialog(){
-    this.dialog.open(DialogAddUserComponent)
+    this.dialog.open(DialogAddUserComponent,)
   }
 
 }
