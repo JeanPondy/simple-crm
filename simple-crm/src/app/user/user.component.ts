@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -13,9 +13,13 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {}
+
+
+  constructor(public dialog: MatDialog) {
+  
+  }
   ngOnInit(): void {}
 
   openDialog(){
