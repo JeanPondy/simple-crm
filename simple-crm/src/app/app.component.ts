@@ -21,9 +21,9 @@ export class AppComponent {
   items$: Observable<any[]>;
 
   constructor() {
-    const aCollection = collection(this.firestore, 'items'); // ✅ Firestore-Sammlung referenzieren
-    const q = query(aCollection); // ✅ Query daraus machen
-    this.items$ = collectionData(q, { idField: 'id' }); // ✅ `idField` hinzufügen, um Dokument-ID zu bekommen
+    const aCollection = collection(this.firestore, 'items'); // Firestore-Sammlung referenzieren
+    const q = query(aCollection); // Query daraus machen
+    this.items$ = collectionData(q, { idField: 'id' }); // `idField` hinzufügen, um Dokument-ID zu bekommen
   }
 
   title = 'simple-crm';
