@@ -9,12 +9,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../models/user.class'; 
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { CommonModule } from '@angular/common';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 
 @Component({
   selector: 'app-dialog-add-user',
   standalone: true,
-  imports: [MatDialogModule, MatInputModule, MatFormFieldModule, MatDatepickerModule, MatButtonModule, MatNativeDateModule, FormsModule],
+  imports: [CommonModule , MatDialogModule, MatInputModule, MatFormFieldModule, MatDatepickerModule, MatButtonModule, MatNativeDateModule, FormsModule, MatProgressBarModule],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss'
 })
@@ -22,6 +25,7 @@ export class DialogAddUserComponent implements OnInit {
 
   user: User = new User();
   birthDate: Date = new Date();
+  isLoading = false; 
   
 
  
@@ -39,6 +43,7 @@ export class DialogAddUserComponent implements OnInit {
   }
 
   async saveUser() {
+    this.isLoading = true;
     this.user.birthDate = this.birthDate.getTime(); // Datum in Timestamp umwandeln
     console.log('Current user is', this.user);
 
@@ -49,7 +54,9 @@ export class DialogAddUserComponent implements OnInit {
       this.dialogRef.close(); // Dialog schließen nach Speichern
     } catch (error) {
       console.error('Fehler beim Speichern:', error);
-    } 
+    } finally {
+      this.isLoading = false; //  Ladebalken ausblenden
+    }
   }
 
 }

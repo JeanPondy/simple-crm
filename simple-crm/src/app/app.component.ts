@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 /* import { AsyncPipe } from '@angular/common'; */
 import { Firestore, collection, collectionData, query } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatToolbarModule, MatIconModule, MatSidenavModule, RouterModule, FormsModule,],
+  imports: [CommonModule , MatToolbarModule, MatIconModule, MatSidenavModule, RouterModule, FormsModule,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
