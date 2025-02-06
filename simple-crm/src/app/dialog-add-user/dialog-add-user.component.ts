@@ -8,6 +8,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../models/user.class'; 
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 
 
 @Component({
@@ -21,8 +22,13 @@ export class DialogAddUserComponent implements OnInit {
 
   user: User = new User();
   birthDate: Date = new Date();
+  
+
  
-  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) {} 
+  constructor(
+    public dialogRef: MatDialogRef<DialogAddUserComponent>, 
+    private firestore: Firestore // Firestore per Konstruktor-Injection
+  ) {} 
 
   onNoClick(): void {
     this.dialogRef.close(); 
@@ -32,9 +38,18 @@ export class DialogAddUserComponent implements OnInit {
       
   }
 
-  saveUser(){
-    this.user.birthDate = this.birthDate.getTime();
-    console.log('Current user is', this.user)
+  async saveUser() {
+    this.user.birthDate = this.birthDate.getTime(); // Datum in Timestamp umwandeln
+    console.log('Current user is', this.user);
+
+    try {
+      const usersCollection = collection(this.firestore, 'users'); // Firestore-Collection referenzieren
+      await addDoc(usersCollection, this.user.toJSON()); // User speichern
+      console.log('User erfolgreich in Firestore gespeichert!');
+      this.dialogRef.close(); // Dialog schließen nach Speichern
+    } catch (error) {
+      console.error('Fehler beim Speichern:', error);
+    } 
   }
 
 }
