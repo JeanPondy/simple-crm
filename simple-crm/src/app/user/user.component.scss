@@ -1,13 +1,60 @@
-.add-user-btn{
-    position: absolute;
-    right: 56px;
-    bottom: 56px;
+mat-card-content {
+    padding-left: 0px;
+    padding-right: 0px;
 }
+
+
 
 .user-table{
     width: 100%;
+    border-collapse: collapse;
+
+    tr{
+        border-bottom: 1px solid rgba(0, 0 ,0, 0.4);
+
+        &:first-child {
+            cursor: unset ;
+            &:hover{
+                background-color: unset;
+            }
+        }
+        &:last-child {
+            border-bottom: 0;
+        }
+      
+        cursor: pointer;
+
+        td {
+            height: 40px;
+            &:first-child {
+                padding-left: 16px;
+            }
+        }
+
+        th{
+            height: 40px;
+            &:first-child {
+                padding-left: 16px;
+            }
+        }
+
+        &:hover{
+            background-color:  rgba(0, 0 ,0, 0.1);
+        }
+    }
+    
+    td{
+        height: 40px;
+    }
+
     th{
         color: rgba(0, 0 ,0, 0.5);
         text-align: start;
     }
+}
+
+.add-user-btn{
+    position: absolute;
+    right: 56px;
+    bottom: 56px;
 }
