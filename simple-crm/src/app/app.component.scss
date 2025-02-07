@@ -24,7 +24,16 @@ height: 56px;
             min-height: 55px;
             display: flex;
             align-items: center;
+
+            .logo{
+                width: 80%;
+                height: 55px;
+                image-rendering: crisp-edges; 
+                object-fit: cover;
+            
+            }  
         }
+      
         .menu-items{
             list-style-type: none;
             padding: 0;
