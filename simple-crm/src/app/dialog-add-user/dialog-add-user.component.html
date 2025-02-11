@@ -99,7 +99,7 @@
 </div>
 <!-- ------------------------ Buttons -------------------------------- -->
 <div mat-dialog-actions class="action-btn">
-  <button [disabled]="isLoading" mat-button (click)="onNoClick()">
+  <button [disabled]="isLoading" mat-button (click)="dialogRef.close()">
     Cancel
   </button>
   <button
