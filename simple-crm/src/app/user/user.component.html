@@ -15,7 +15,11 @@
       </thead>
       <tbody>
         <!-- ngFor Schleife durch die Nutzer und Darstellung der Daten -->
-        <tr *ngFor="let user of users">
+        <tr
+          class="tr"
+          *ngFor="let user of users"
+          [routerLink]="[' /user/' + user.id]"
+        >
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
           <td>{{ user.email }}</td>
