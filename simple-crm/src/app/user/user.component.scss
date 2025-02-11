@@ -8,6 +8,9 @@ mat-card-content {
 .user-table{
     width: 100%;
     border-collapse: collapse;
+    thead{
+        border-bottom: 4px solid rgb(91,186,238);
+    }
 
     tr{
         border-bottom: 1px solid rgba(0, 0 ,0, 0.4);
@@ -58,3 +61,9 @@ mat-card-content {
     right: 56px;
     bottom: 56px;
 }
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+  }

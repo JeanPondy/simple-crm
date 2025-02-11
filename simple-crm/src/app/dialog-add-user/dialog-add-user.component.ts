@@ -41,22 +41,24 @@ export class DialogAddUserComponent implements OnInit {
   ngOnInit(): void {
       
   }
-
   async saveUser() {
     this.isLoading = true;
     this.user.birthDate = this.birthDate.getTime(); // Datum in Timestamp umwandeln
     console.log('Current user is', this.user);
-
+  
     try {
       const usersCollection = collection(this.firestore, 'users'); // Firestore-Collection referenzieren
       await addDoc(usersCollection, this.user.toJSON()); // User speichern
       console.log('User erfolgreich in Firestore gespeichert!');
+      
       this.dialogRef.close(); // Dialog schließen nach Speichern
+      window.location.reload(); // **Seite neu laden**
     } catch (error) {
       console.error('Fehler beim Speichern:', error);
     } finally {
-      this.isLoading = false; //  Ladebalken ausblenden
+      this.isLoading = false; // Ladebalken ausblenden
     }
   }
+  
 
 }

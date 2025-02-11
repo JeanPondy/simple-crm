@@ -1,4 +1,5 @@
 export class User {
+ /*  id?: string; // ID-Feld hinzufügen */
     firstName: string;
     lastName: string;
     birthDate: number;

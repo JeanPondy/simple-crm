@@ -1,34 +1,40 @@
 <mat-card appearance="outlined">
   <mat-card-content>
+    <!-- Tabelle mit den Benutzerinformationen -->
     <table class="user-table">
-      <tr>
-        <th>Simple card</th>
-        <th>E-mail</th>
-        <th>City</th>
-        <th>Beruf</th>
-      </tr>
-      <tr>
-        <td>asd</td>
-        <td>asd</td>
-        <td>asd</td>
-        <td>asd</td>
-      </tr>
-      <tr>
-        <td>asd</td>
-        <td>asd</td>
-        <td>asd</td>
-        <td>asd</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>Vorname</th>
+          <th>Nachname</th>
+          <th>Stadt</th>
+          <th>Straße</th>
+          <th>PLZ</th>
+          <th>Geburtsdatum</th>
+          <th>E-mail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ngFor Schleife durch die Nutzer und Darstellung der Daten -->
+        <tr *ngFor="let user of users">
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.city }}</td>
+          <td>{{ user.street }}</td>
+          <td>{{ user.zipCode }}</td>
+          <td>{{ user.birthDate | date : "MM/dd/yyyy" }}</td>
+        </tr>
+      </tbody>
     </table>
   </mat-card-content>
 </mat-card>
 
+<!-- Button zum Öffnen des Dialogs -->
 <button
   (click)="openDialog()"
   class="add-user-btn"
   mat-fab
   color="primary"
-  matTooltip="Add user"
+  matTooltip="Benutzer hinzufügen"
   matTooltipPosition="above"
 >
   <mat-icon>add</mat-icon>
