@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
+import { Firestore, doc, getDoc } from '@angular/fire/firestore';
+import { User } from '../../models/user.class';
 
 @Component({
   selector: 'app-user-detail',
@@ -13,11 +15,44 @@ import {MatCardModule} from '@angular/material/card';
 
 export class UserDetailComponent {
   userId: string | null = null;
-  constructor(private route: ActivatedRoute) {}
+  user: User = new User;
+  constructor(private route: ActivatedRoute, private firestore: Firestore) {}
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('id');
-    console.log('GOT ID:',  this.userId)
+    console.log('GOT ID:',  this.userId);
+    if (this.userId) {
+      this.getUser();
+    }
+  }
+
+  async getUser() {
+    try {
+      const userDocRef = doc(this.firestore, 'users', this.userId!); // Verweis auf das spezifische Dokument
+      const userSnap = await getDoc(userDocRef); // Dokument auslesen
+      
+      if (userSnap.exists()) {
+          // Type Assertion
+        this.user = userSnap.data() as User; // Daten speichern, wenn das Dokument existiert
+        console.log('Retrieved user:', this.user);
+      } else {
+        console.log('No such document!');
+      }
+    } catch (error) {
+      console.error('Error fetching user:', error);
+    }
   }
 
 }
+
+
+/* getUser(){
+  this.firestore
+  .collections('users')
+  .doc(this.userId)
+  .valuesChanges()
+  .subscribe((user: any) => {
+    this.user = user;
+    console.log('Retrieved user', this.user)
+  })
+} */

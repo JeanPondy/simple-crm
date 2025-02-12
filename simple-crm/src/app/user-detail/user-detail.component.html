@@ -2,22 +2,21 @@
   <mat-card-content class="image-userDetails">
     <img src="./assets/img/profile-1.png" alt="" />
     <div class="user-details">
-      <h2>Max Mustermann</h2>
-      email&#64;example.com
+      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+      <p>{{ user.email }}</p>
+      <p>{{ user.birthDate | date : "MM/dd/yyyy" }}</p>
     </div>
   </mat-card-content>
 </mat-card>
 
-<mat-card class="example-card mt-32" appearance="outlined">
+<mat-card *ngIf="user" class="address mt-32" appearance="outlined">
   <mat-card-header>
     <mat-card-title>Address</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p>
-      Muster Str 90 <br />
-      12345 Musterstadt <br />
-      Deutschland
-    </p>
+    <p>{{ user.street }}</p>
+    <p>{{ user.zipCode }} {{ user.city }}</p>
+    <p></p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button class="mR-16">LIKE</button>
