@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ActivatedRoute } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 
 @Component({
@@ -10,6 +10,14 @@ import {MatCardModule} from '@angular/material/card';
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss'
 })
+
 export class UserDetailComponent {
+  userId: string | null = null;
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.userId = this.route.snapshot.paramMap.get('id');
+    console.log('GOT ID:',  this.userId)
+  }
 
 }
