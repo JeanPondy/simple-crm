@@ -10,6 +10,13 @@
 </mat-card>
 
 <mat-card *ngIf="user" class="address mt-32" appearance="outlined">
+  <button
+    mat-icon-button
+    class="pin-right-upper-corner"
+    (click)="openAddressDialog()"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
   <mat-card-header>
     <mat-card-title>Address</mat-card-title>
   </mat-card-header>

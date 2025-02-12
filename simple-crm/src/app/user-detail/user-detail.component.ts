@@ -4,11 +4,13 @@ import { RouterModule, ActivatedRoute } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 import { User } from '../../models/user.class';
+import {MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatCardModule],
+  imports: [CommonModule, RouterModule, MatCardModule, MatIconModule, MatButtonModule],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss'
 })
@@ -42,6 +44,8 @@ export class UserDetailComponent {
       console.error('Error fetching user:', error);
     }
   }
+
+  openAddressDialog(){}
 
 }
 
