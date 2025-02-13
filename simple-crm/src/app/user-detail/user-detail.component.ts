@@ -7,6 +7,8 @@ import { User } from '../../models/user.class';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -19,7 +21,10 @@ import {MatMenuModule} from '@angular/material/menu';
 export class UserDetailComponent {
   userId: string | null = null;
   user: User = new User;
-  constructor(private route: ActivatedRoute, private firestore: Firestore) {}
+  constructor(
+    private route: ActivatedRoute, 
+    private firestore: Firestore, 
+    public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('id');
@@ -48,9 +53,13 @@ export class UserDetailComponent {
 
   openAddressDialog(){}
 
-  editUserDetail(){}
+  editUserDetail(){
+    this.dialog.open(DialogEditAddressComponent);
+  }
   
-  editMenu(){}
+  editMenu(){
+     this.dialog.open(DialogEditAddressComponent);
+  }
 
 }
 
