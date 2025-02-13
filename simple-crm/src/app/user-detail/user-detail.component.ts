@@ -55,10 +55,12 @@ export class UserDetailComponent {
 
   editUserDetail(){
     this.dialog.open(DialogEditAddressComponent);
+   
   }
   
   editMenu(){
-     this.dialog.open(DialogEditAddressComponent);
+    const dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.user = this.user;
   }
 
 }
