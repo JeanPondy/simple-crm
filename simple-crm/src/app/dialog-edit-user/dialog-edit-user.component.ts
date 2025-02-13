@@ -20,7 +20,7 @@ import { User } from '../../models/user.class';
 })
 
     export class DialogEditUserComponent implements OnInit {
-    user!: User;
+    user: User = new User(); 
     isLoading: boolean = false;
     birthDate!: Date;  
 

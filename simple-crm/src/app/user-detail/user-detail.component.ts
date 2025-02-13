@@ -42,7 +42,7 @@ export class UserDetailComponent {
       
       if (userSnap.exists()) {
           // Type Assertion
-        this.user = userSnap.data() as User; // Daten speichern, wenn das Dokument existiert
+          this.user = new User(userSnap.data()); // Daten speichern, wenn das Dokument existiert
         console.log('Retrieved user:', this.user);
       } else {
         console.log('No such document!');
@@ -56,13 +56,13 @@ export class UserDetailComponent {
 
   editUserDetail(){
     const dialog = this.dialog.open( DialogEditUserComponent);
-    dialog.componentInstance.user = this.user;
+    dialog.componentInstance.user = new User(this.user.toJSON());
    
   }
   
   editMenu(){
     const dialog = this.dialog.open(DialogEditAddressComponent);
-    dialog.componentInstance.user = this.user;
+    dialog.componentInstance.user = new User(this.user.toJSON());
   }
 
 }
