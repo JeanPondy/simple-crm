@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -54,7 +55,8 @@ export class UserDetailComponent {
   openAddressDialog(){}
 
   editUserDetail(){
-    this.dialog.open(DialogEditAddressComponent);
+    const dialog = this.dialog.open( DialogEditUserComponent);
+    dialog.componentInstance.user = this.user;
    
   }
   
