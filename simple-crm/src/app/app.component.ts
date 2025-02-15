@@ -26,5 +26,5 @@ export class AppComponent {
     this.items$ = collectionData(q, { idField: 'id' }); // `idField` hinzufügen, um Dokument-ID zu bekommen
   }
 
-  title = 'simple-crm';
+
 }
